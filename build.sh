@@ -1,3 +1,3 @@
 #!/bin/bash
 # Compile Elm files
-elm-make ./src/RockPaperScissors/RockPaperScissors.elm --output=./static/rock-paper-scissors.js --warn
+elm-make ./src/RockPaperScissors/RockPaperScissors.elm --output=./src/script.js --warn
