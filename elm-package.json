@@ -1,8 +1,8 @@
 {
     "version": "1.0.0",
-    "summary": "Small Elm playground",
-    "repository": "https://github.com/lcambero/lcambero.git",
-    "license": "Apache 2.0",
+    "summary": "Rock Paper Scissors game",
+    "repository": "https://github.com/lcambero/rock-paper-scissors.git",
+    "license": "MIT",
     "source-directories": [
         "src",
         "src/RockPaperScissors"
