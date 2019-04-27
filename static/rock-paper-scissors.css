@@ -1,0 +1,42 @@
+:root {
+    --color-1: #E5E8E8; /* gray */
+    --color-2: #2C3E50; /* black */
+    --color-3: #7DCEA0; /* green lime */
+    --color-4: #A8171E; /* red */
+    --color-5: #00258C; /* blue */
+    --color-6: #001439; /* dark blue */
+    --color-7: #E6BD4B; /* yellow */
+}
+
+.rock-paper-scissors__scoreboard {
+    background-color: var(--color-6);
+    border-radius: 1em;
+}
+
+.rock-paper-scissors__scoreboard-computer-color {
+    width: 1em;
+    background-color: var(--color-4);
+    border-radius: 1em 0em 0em 0em;
+}
+
+.rock-paper-scissors__scoreboard-user-color {
+    width: 1em;
+    background-color: var(--color-5);
+    border-radius: 0em 0em 0em 1em;
+}
+
+.rock-paper-scissors__scoreboard-text {
+    color: var(--color-1);
+	font-size: 2.5em;
+	font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    transition: color 1s;
+}
+
+.rock-paper-scissors__scoreboard-winner {
+    color: var(--color-3);
+}
+
+.rock-paper-scissors__scoreboard-winner-msg {
+    color: var(--color-1);
+}
