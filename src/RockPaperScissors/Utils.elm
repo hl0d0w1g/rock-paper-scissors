@@ -3,6 +3,7 @@ module RockPaperScissors.Utils exposing
     , generateRandomInt
     , calcGameWinner
     , gameWinnerMessage
+    , addGameResultClass
     )
 
 {-| This module contains the utils functions of the module.
@@ -14,6 +15,7 @@ module RockPaperScissors.Utils exposing
 @docs generateRandomInt
 @docs calcGameWinner
 @docs gameWinnerMessage
+@docs addGameResultClass
 
 -}
 
@@ -95,44 +97,63 @@ gameWinnerMessage userChoice computerChoice =
         Rock ->
             case computerChoice of
                 Rock ->
-                    "Tie"
+                    "Rock equals Rock. It's a draw!"
 
                 Paper ->
-                    "Computer"
+                    "Rock loses to Paper. You lost!"
 
                 Scissors ->
-                    "User"
+                    "Rock beats Scissors. You win!"
 
                 NoChoice ->
-                    "Tie"
+                    ""
 
         Paper ->
             case computerChoice of
                 Rock ->
-                    "User"
+                    "Paper covers Rock. You win!"
 
                 Paper ->
-                    "Tie"
+                    "Paper equals Paper. It's a draw!"
 
                 Scissors ->
-                    "Computer"
+                    "Paper loses to Scissors. You lost!"
 
                 NoChoice ->
-                    "Tie"
+                    ""
 
         Scissors ->
             case computerChoice of
                 Rock ->
-                    "Computer"
+                    "Scissors loses to Rock. You lost!"
 
                 Paper ->
-                    "User"
+                    "Scissors cuts Paper. You win!"
 
                 Scissors ->
-                    "Tie"
+                    "Scissors equals Scissors. It's a draw!"
 
                 NoChoice ->
-                    "Tie"
+                    ""
 
         NoChoice ->
-            "Tie"
+            ""
+
+
+{-| Returns the correct css class to the choice.
+-}
+addGameResultClass : Choice -> Choice -> Winner -> String
+addGameResultClass choice userChoice winner =
+    if choice == userChoice then
+        case winner of
+            User ->
+                "winner-choice"
+
+            Computer ->
+                "loser-choice"
+
+            Tie ->
+                "tie-choice"
+
+    else
+        ""

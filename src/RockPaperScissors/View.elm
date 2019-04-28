@@ -9,11 +9,11 @@ module RockPaperScissors.View exposing (view)
 
 -}
 
-import Html exposing (Html, div, h5, hr, img, p, span, text)
+import Html exposing (Html, div, h5, hr, i, img, p, span, text)
 import Html.Attributes exposing (class, src)
 import Html.Events exposing (onClick)
 import RockPaperScissors.Types exposing (Choice(..), Model, Msg(..))
-import RockPaperScissors.Utils exposing (gameWinnerMessage)
+import RockPaperScissors.Utils exposing (addGameResultClass, gameWinnerMessage)
 
 
 {-| Main app view element
@@ -33,9 +33,9 @@ header : Model -> Html Msg
 header model =
     div [ class "row p-5" ]
         [ div [ class "col text-center" ]
-            [ hr [ class "hr-line-1" ] []
+            [ hr [ class "hr-line" ] []
             , span [ class "title-1" ] [ text "Rock Paper Scissors" ]
-            , hr [ class "hr-line-1" ] []
+            , hr [ class "hr-line" ] []
             ]
         ]
 
@@ -47,18 +47,18 @@ scoreboard model =
     div [ class "row" ]
         [ div [ class "col" ]
             [ div [ class "row justify-content-center" ]
-                [ div [ class "col-auto col-md-4 rock-paper-scissors__scoreboard" ]
+                [ div [ class "col-auto col-md-4 scoreboard" ]
                     [ div [ class "row  border-bottom" ]
-                        [ div [ class "col-auto rock-paper-scissors__scoreboard-computer-color" ]
+                        [ div [ class "col-auto scoreboard-computer-color" ]
                             []
                         , div [ class "col-8 text-center" ]
-                            [ span [ class "rock-paper-scissors__scoreboard-text" ] [ text "Computer" ] ]
+                            [ span [ class "scoreboard-text" ] [ text "Computer" ] ]
                         , div [ class "col-auto border-left" ]
                             [ span
                                 [ class
-                                    ("rock-paper-scissors__scoreboard-text "
+                                    ("scoreboard-text "
                                         ++ (if model.computerScore > model.userScore then
-                                                "rock-paper-scissors__scoreboard-winner"
+                                                "scoreboard-winner"
 
                                             else
                                                 ""
@@ -69,16 +69,16 @@ scoreboard model =
                             ]
                         ]
                     , div [ class "row  border-top" ]
-                        [ div [ class "col-auto rock-paper-scissors__scoreboard-user-color" ]
+                        [ div [ class "col-auto scoreboard-user-color" ]
                             []
                         , div [ class "col-8 text-center" ]
-                            [ span [ class "rock-paper-scissors__scoreboard-text" ] [ text "User" ] ]
+                            [ span [ class "scoreboard-text" ] [ text "User" ] ]
                         , div [ class "col-auto border-left" ]
                             [ span
                                 [ class
-                                    ("rock-paper-scissors__scoreboard-text "
+                                    ("scoreboard-text "
                                         ++ (if model.userScore > model.computerScore then
-                                                "rock-paper-scissors__scoreboard-winner"
+                                                "scoreboard-winner"
 
                                             else
                                                 ""
@@ -92,7 +92,7 @@ scoreboard model =
                 ]
             , div [ class "row justify-content-center p-5" ]
                 [ div [ class "col-auto" ]
-                    [ span [ class "rock-paper-scissors__scoreboard-winner-msg" ] [ text (gameWinnerMessage model.userChoice model.computerChoice) ] ]
+                    [ span [ class "winner-msg" ] [ text (gameWinnerMessage model.userChoice model.computerChoice) ] ]
                 ]
             ]
         ]
@@ -106,16 +106,16 @@ choices model =
         [ div [ class "col" ]
             [ div
                 [ class "row p-5" ]
-                [ div [ class "col-4" ]
+                [ div [ class "col-4 text-center" ]
                     [ rock model ]
-                , div [ class "col-4" ]
+                , div [ class "col-4 text-center" ]
                     [ paper model ]
-                , div [ class "col-4" ]
+                , div [ class "col-4 text-center" ]
                     [ scissors model ]
                 ]
             , div [ class "row justify-content-center" ]
                 [ div [ class "col-auto" ]
-                    [ span [ class "abstract" ] [ text "Make your move!" ]
+                    [ span [ class "title-2" ] [ text "Make your move!" ]
                     ]
                 ]
             ]
@@ -127,11 +127,8 @@ choices model =
 rock : Model -> Html Msg
 rock model =
     div
-        [ class ""
-        , onClick (UserChoice Rock)
-        ]
-        [ p [ class "text-white" ] [ text "Rock" ]
-        ]
+        [ onClick (UserChoice Rock) ]
+        [ i [ class ("fas fa-hand-rock choice " ++ addGameResultClass Rock model.userChoice model.winner) ] [] ]
 
 
 {-| Paper option
@@ -139,11 +136,8 @@ rock model =
 paper : Model -> Html Msg
 paper model =
     div
-        [ class ""
-        , onClick (UserChoice Paper)
-        ]
-        [ p [ class "text-white" ] [ text "Paper" ]
-        ]
+        [ onClick (UserChoice Paper) ]
+        [ i [ class ("fas fa-hand-paper choice " ++ addGameResultClass Paper model.userChoice model.winner) ] [] ]
 
 
 {-| Scissors option
@@ -151,8 +145,5 @@ paper model =
 scissors : Model -> Html Msg
 scissors model =
     div
-        [ class ""
-        , onClick (UserChoice Scissors)
-        ]
-        [ p [ class "text-white" ] [ text "Scissors" ]
-        ]
+        [ onClick (UserChoice Scissors) ]
+        [ i [ class ("fas fa-hand-scissors choice " ++ addGameResultClass Scissors model.userChoice model.winner) ] [] ]
