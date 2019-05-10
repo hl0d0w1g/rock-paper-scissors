@@ -40,20 +40,8 @@ body {
 }
 
 .scoreboard {
-    background-color: var(--color-6);
+    background-color: transparent;
     border-radius: 1em;
-}
-
-.scoreboard-computer-color {
-    width: 1em;
-    background-color: var(--color-4);
-    border-radius: 1em 0em 0em 0em;
-}
-
-.scoreboard-user-color {
-    width: 1em;
-    background-color: var(--color-5);
-    border-radius: 0em 0em 0em 1em;
 }
 
 .scoreboard-text {
@@ -68,6 +56,14 @@ body {
     color: var(--color-3);
 }
 
+.computer-msg {
+    margin: 0px;
+	color: var(--color-1);
+	font-size: 2em;
+	font-family: 'Raleway', serif;
+	font-weight: 500;
+}
+
 .winner-msg {
     margin: 0px;
 	color: var(--color-1);
@@ -76,7 +72,12 @@ body {
 	font-weight: 500;
 }
 
-.choice {
+.computer-choice {
+    font-size: 3em;
+    color: burlywood;
+}
+
+.user-choice {
     font-size: 8em;
     cursor: pointer;
     color: burlywood;
@@ -90,7 +91,7 @@ body {
     transition: .5s ease;
 }
 
-.choice:hover {
+.user-choice:hover {
     transform: scale(1.1, 1.1);
 }
 

@@ -23,6 +23,8 @@ view model =
     div [ class "container" ]
         [ header model
         , scoreboard model
+        , computerMsg model
+        , winnerMsg model
         , choices model
         ]
 
@@ -49,9 +51,7 @@ scoreboard model =
             [ div [ class "row justify-content-center" ]
                 [ div [ class "col-auto col-md-4 scoreboard" ]
                     [ div [ class "row  border-bottom" ]
-                        [ div [ class "col-auto scoreboard-computer-color" ]
-                            []
-                        , div [ class "col-8 text-center" ]
+                        [ div [ class "col-8 text-center" ]
                             [ span [ class "scoreboard-text" ] [ text "Computer" ] ]
                         , div [ class "col-auto border-left" ]
                             [ span
@@ -69,9 +69,7 @@ scoreboard model =
                             ]
                         ]
                     , div [ class "row  border-top" ]
-                        [ div [ class "col-auto scoreboard-user-color" ]
-                            []
-                        , div [ class "col-8 text-center" ]
+                        [ div [ class "col-8 text-center" ]
                             [ span [ class "scoreboard-text" ] [ text "User" ] ]
                         , div [ class "col-auto border-left" ]
                             [ span
@@ -90,11 +88,45 @@ scoreboard model =
                         ]
                     ]
                 ]
-            , div [ class "row justify-content-center p-5" ]
-                [ div [ class "col-auto" ]
-                    [ span [ class "winner-msg" ] [ text (gameWinnerMessage model.userChoice model.computerChoice) ] ]
+            ]
+        ]
+
+
+{-| Renders the computer choice
+-}
+computerMsg : Model -> Html Msg
+computerMsg model =
+    if model.computerChoice /= NoChoice then
+        div [ class "row justify-content-center pt-5 pb-2" ]
+            [ div [ class "col-auto" ]
+                [ span [ class "computer-msg" ] [ text "Computer says" ] ]
+            , div [ class "col-auto" ]
+                [ case model.computerChoice of
+                    Rock ->
+                        i [ class "fas fa-hand-rock computer-choice" ] []
+
+                    Paper ->
+                        i [ class "fas fa-hand-paper computer-choice" ] []
+
+                    Scissors ->
+                        i [ class "fas fa-hand-scissors computer-choice" ] []
+
+                    NoChoice ->
+                        i [] []
                 ]
             ]
+
+    else
+        div [] []
+
+
+{-| Renders the winner message
+-}
+winnerMsg : Model -> Html Msg
+winnerMsg model =
+    div [ class "row justify-content-center p-3" ]
+        [ div [ class "col-auto" ]
+            [ span [ class "winner-msg" ] [ text (gameWinnerMessage model.userChoice model.computerChoice) ] ]
         ]
 
 
@@ -128,7 +160,7 @@ rock : Model -> Html Msg
 rock model =
     div
         [ onClick (UserChoice Rock) ]
-        [ i [ class ("fas fa-hand-rock choice " ++ addGameResultClass Rock model.userChoice model.winner) ] [] ]
+        [ i [ class ("fas fa-hand-rock user-choice " ++ addGameResultClass Rock model.userChoice model.winner) ] [] ]
 
 
 {-| Paper option
@@ -137,7 +169,7 @@ paper : Model -> Html Msg
 paper model =
     div
         [ onClick (UserChoice Paper) ]
-        [ i [ class ("fas fa-hand-paper choice " ++ addGameResultClass Paper model.userChoice model.winner) ] [] ]
+        [ i [ class ("fas fa-hand-paper user-choice " ++ addGameResultClass Paper model.userChoice model.winner) ] [] ]
 
 
 {-| Scissors option
@@ -146,4 +178,4 @@ scissors : Model -> Html Msg
 scissors model =
     div
         [ onClick (UserChoice Scissors) ]
-        [ i [ class ("fas fa-hand-scissors choice " ++ addGameResultClass Scissors model.userChoice model.winner) ] [] ]
+        [ i [ class ("fas fa-hand-scissors user-choice " ++ addGameResultClass Scissors model.userChoice model.winner) ] [] ]

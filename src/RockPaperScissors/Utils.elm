@@ -97,13 +97,13 @@ gameWinnerMessage userChoice computerChoice =
         Rock ->
             case computerChoice of
                 Rock ->
-                    "Rock equals Rock. It's a draw!"
+                    "Rock equals Rock. It's a draw! ⚔️"
 
                 Paper ->
-                    "Rock loses to Paper. You lost!"
+                    "Rock loses to Paper. You lost! 💩"
 
                 Scissors ->
-                    "Rock beats Scissors. You win!"
+                    "Rock beats Scissors. You win! 🔥"
 
                 NoChoice ->
                     ""
@@ -111,13 +111,13 @@ gameWinnerMessage userChoice computerChoice =
         Paper ->
             case computerChoice of
                 Rock ->
-                    "Paper covers Rock. You win!"
+                    "Paper covers Rock. You win! 🔥"
 
                 Paper ->
-                    "Paper equals Paper. It's a draw!"
+                    "Paper equals Paper. It's a draw! ⚔️"
 
                 Scissors ->
-                    "Paper loses to Scissors. You lost!"
+                    "Paper loses to Scissors. You lost! 💩"
 
                 NoChoice ->
                     ""
@@ -125,13 +125,13 @@ gameWinnerMessage userChoice computerChoice =
         Scissors ->
             case computerChoice of
                 Rock ->
-                    "Scissors loses to Rock. You lost!"
+                    "Scissors loses to Rock. You lost! 💩"
 
                 Paper ->
-                    "Scissors cuts Paper. You win!"
+                    "Scissors cuts Paper. You win! 🔥"
 
                 Scissors ->
-                    "Scissors equals Scissors. It's a draw!"
+                    "Scissors equals Scissors. It's a draw! ⚔️"
 
                 NoChoice ->
                     ""
