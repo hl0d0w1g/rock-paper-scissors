@@ -2,6 +2,10 @@
 
 The classic rock paper scissors game developed in the functional programming language ELM.
 
+<p align="center">
+  <img width="900" height="450" src="demo_img.png">
+</p>
+
 To use it, execute the command (elm 0.18 is necessary):
 ```
 sh build.sh
